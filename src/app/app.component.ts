@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demoaltioracorp';
+  constructor(private route:Router){}
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.route.navigate(["crearord"])
+  }
+
+  Clientes(){
+
+    this.route.navigate(["clientenav"])
+  }
+  Articulos(){
+
+    this.route.navigate(["articulo"])
+  }
+  Orden(){
+
+    this.route.navigate(["orden"])
+  }
 }
