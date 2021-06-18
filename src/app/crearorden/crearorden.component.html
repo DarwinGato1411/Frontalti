@@ -38,10 +38,14 @@
         <div class="row">
          
           <div class="col">
-              Productos
+              
+            Cantidad:  <input type="text"  placeholder="Cantidad" [(ngModel)]="cantidadAgrega" aria-describedby="basic-addon2">
             <table  mat-table [dataSource]="listadoArticulo"  class="mat-elevation-z8 col-md-12" >
 
-   
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef> Stock </th>
+                    <td mat-cell *matCellDef="let listadoArticulo"> {{listadoArticulo.artStock}} </td>
+                  </ng-container>
   
                 <ng-container matColumnDef="codigo">
                   <th mat-header-cell *matHeaderCellDef> Codigo </th>
@@ -79,7 +83,11 @@
             <table #tabla3  mat-table [dataSource]="listadoArticuloSelected"  class="mat-elevation-z8 col-md-12" >
 
    
-  
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                    <td mat-cell *matCellDef="let listadoArticulo"> {{listadoArticulo.cantidadRegistra}} </td>
+                  </ng-container>
+
                 <ng-container matColumnDef="codigo">
                   <th mat-header-cell *matHeaderCellDef> Codigo </th>
                   <td mat-cell *matCellDef="let listadoArticulo"> {{listadoArticulo.artCodigo}} </td>

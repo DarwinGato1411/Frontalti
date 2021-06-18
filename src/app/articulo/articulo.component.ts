@@ -16,7 +16,7 @@ export class ArticuloComponent implements OnInit {
   columnas: string[] = ['codigo', 'nombre', 'precio', 'borrar', 'editar'];
   listadoArticulo: any;
 
-  articuloselect: ArticuloMod = new ArticuloMod(0, "", "", 0);
+  articuloselect: ArticuloMod = new ArticuloMod(0, "", "", 0,0,0);
 
   constructor(private consumo: ComsumoService, private route: Router) { }
 
@@ -77,10 +77,10 @@ export class ArticuloComponent implements OnInit {
        // alert("Guardado con exito")
         this.obtenerListado();
       })
-    this.articuloselect = new ArticuloMod(0, "", "", 0);
+    this.articuloselect = new ArticuloMod(0, "", "", 0,0,0);
   }
   nuevo() {
-    this.articuloselect = new ArticuloMod(0, "", "", 0);
+    this.articuloselect = new ArticuloMod(0, "", "", 0,0,0);
 
   }
 

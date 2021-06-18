@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArticuloMod, ClienteMod, DetalleOrdenMod, ordenCrear } from './Modelo/Modelo';
+import { ArticuloMod, ClienteMod, DetalleOrdenMod, ordenCrear, Respuesta } from './Modelo/Modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -64,9 +64,9 @@ export class ComsumoService {
   }
 
 
-  crearOrden(orden: ordenCrear) {
+  crearOrden(orden: ordenCrear){
     console.log("param articulo", orden)
-    return this.httpCliente.post<ArticuloMod>("http://localhost:8087/api/crearorden", orden);
+    return this.httpCliente.post<Respuesta>("http://localhost:8087/api/crearorden", orden);
   }
    //METODOS PARA DETALLE DE LA ORDEN
    

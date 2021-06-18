@@ -42,7 +42,9 @@ export class ClienteComponent implements OnInit {
 
             this.listado = data;
           },
-          error => { }
+          error => {
+            console.log("ERROR",error);
+          }
         )
 
     } else {

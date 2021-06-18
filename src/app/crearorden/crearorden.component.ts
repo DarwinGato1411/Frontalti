@@ -11,13 +11,16 @@ import { ArticuloMod, ClienteMod, DetalleOrdenMod, ordenCrear, OrdenMod } from '
 })
 export class CrearordenComponent implements OnInit {
 
+
+  cantidadAgrega!:number;
   dniBuscar: String = "";
   codigoBucar: String = "";
   listadoArticulo: ArticuloMod[] = []
   listadoArticuloSelected: ArticuloMod[] = [];
-  articuloselect: ArticuloMod = new ArticuloMod(0, "", "", 0);
-  columnas: string[] = ['codigo', 'nombre', 'precio', 'editar'];
-  columnasSelect: string[] = ['codigo', 'nombre', 'precio', 'editar'];
+  articuloselect: ArticuloMod = new ArticuloMod(0, "", "", 0,0,0);
+  columnas: string[] = ['cantidad','codigo', 'nombre', 'precio', 'editar'];
+  
+  columnasSelect: string[] = ['cantidad','codigo', 'nombre', 'precio', 'editar'];
 
   clienteBuscado: ClienteMod = new ClienteMod(0, "", "", "");
 
@@ -84,6 +87,15 @@ export class CrearordenComponent implements OnInit {
   }
 
   agregar(cod: ArticuloMod) {
+    console.log(cod.artStock,'   ',this.cantidadAgrega   )
+  //  if(this.cantidadAgrega>cod.artStock){
+   //   alert('La cantidad es superior al stock')
+   // return;
+    //}
+//ingreso la cantidad al item
+
+    cod.cantidadRegistra=this.cantidadAgrega;
+    
     let data: ArticuloMod[] = [];
     if (this.tabla3.dataSource) {
       data = (this.tabla3.dataSource as ArticuloMod[]);
@@ -104,11 +116,17 @@ export class CrearordenComponent implements OnInit {
 
     if (this.clienteBuscado.cliCedula == "") {
       alert("Verifique la información...!")
+      return;
     }
     this.ordenCrear = new ordenCrear(this.clienteBuscado, this.listadoArticuloSelected);
     this.consumo.crearOrden(this.ordenCrear).
       subscribe(data => {
         // alert("Guardado con exito")
+
+        if (data.codigo=='001'){
+        alert(data.descripcion)
+        return;
+        }
         this.route.navigate(["orden"])
       })
   }
